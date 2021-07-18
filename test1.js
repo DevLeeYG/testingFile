@@ -1,16 +1,17 @@
-function sumTo(num) {
-  // TODO: 여기에 코드를 작성합니다.
-  // 별도의 최적화 기법(memoization)은 금지됩니다.
-  if (num <= 0) {
-    return 0;
-  } else {
-    return num + sumTo(num - 1);
+function unpackGiftbox(giftBox, wish) {
+  for (let n = 0; n < giftBox.length; n++) {
+    if (giftBox[n] === wish) {
+      return true;
+    } else if (Array.isArray(giftBox[n])) {
+      let result = unpackGiftbox(giftBox[n], wish);
+      if (result) {
+        return true;
+      }
+    }
   }
+  return false;
 }
+const giftBox = ["macbook", "mugcup", ["eyephone", "postcard"], "money"];
 
-console.log(sumTo(5));
-// sumTo(1) => return 1
-// sumTo(2) => return sumTo(1) + sumTo(num - 1);
-// sumTo(3) => return
-// sumTo(4)
-// sumTo(5)
+let output = unpackGiftbox(giftBox, "postcard");
+console.log(output);
