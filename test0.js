@@ -32,23 +32,17 @@ let input = [
 ];
 
 function test2(arr, num) {
-  // TODO: 여기에 코드를 작성하세요
-  // recursive니까 recursive에 맞는 함수를 작성한 다음에 다시 실행시켜주면 된다.
-
-  // 이거를 처음에 어떻게 접근해야하나요????
-
-  let newArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].id === num) {
       return arr[i];
     } else if (Array.isArray(arr[i].children)) {
-      let nextArr = arr[i].children;
-      newArr = newArr.concat(nextArr);
+      let result = test2(arr[i].children, num);
+      if (result) {
+        return result;
+      }
     }
   }
-  if (newArr.length > 0) {
-    return test7(newArr, num);
-  }
+
   return null;
 }
 
@@ -60,3 +54,29 @@ console.log(output); // --> { id: 5, name: 'steve', children: [{ id: 6, name: 'l
 
 output = test2(input, 99);
 console.log(output); // --> null
+
+// function test2(arr,num){
+//   let newArr = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].id === num) {
+//       return arr[i];
+//     } else if (Array.isArray(arr[i].children)) {
+//       let nextArr = arr[i].children;
+//       newArr = newArr.concat(nextArr);
+//     }
+//   }
+//   if (newArr.length > 0) {
+//     return test2(newArr, num);
+//   }
+//   return null;
+// }
+
+// test7
+// 문제
+// 객체를 요소로 갖는 배열과 id를 입력받아, 해당 id값을 가지고 있는 객체를 리턴해야 합니다.
+
+// 입력으로 주어지는 배열은 재귀적 구조를 가지고 있습니다. (입출력 예시 참고)
+// 배열이 요소인 객체가 'children' 속성을 가질 경우, 해당 값은 초기 입력(arr)과 같은 구조를 지닌 배열입니다.
+// 중첩 구조의 깊이(depth)에는 제한이 없습니다.
+// 함수 test7은 재귀 함수로 구현되어야 합니다.
+// 입력받은 id를 가진 객체가 없을 경우, null을 리턴해야 합니다.
