@@ -1,9 +1,8 @@
-var parson = {
-  name: "lee",
-  sayhello: function () {
-    console.log(`hello my name is ${this.name}`);
-  },
-};
+var x = "dlobal";
 
-console.log(parson);
-console.log(parson.sayhello);
+function foo() {
+  console.log(x);
+  var x = "local";
+}
+console.log(foo());
+console.log(x);

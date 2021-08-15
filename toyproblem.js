@@ -71,3 +71,12 @@ const powerSet = function (str) {
   return result.sort();
 };
 // 쉘로우카피를 하는이유는 하지않는다면 result를 계속 가져와야되는데 무한반복이된다 하지만 쉘로우카피를 해서 변수 copy에저장하면 copy안에서의 반복으로 끝나게되기때문에 가능하다
+
+const balancedBrackets = function (str) {
+  const stack = [];
+  const opener = {
+    "{": "}",
+    "[": "]",
+    "(": ")",
+  };
+};
